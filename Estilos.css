@@ -1,0 +1,1018 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #7d0808 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .geometric-bg {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.06) 0%, transparent 50%);
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        
+/* ===========================================
+    HERO CAROUSEL – Carrusel grande de portada
+    Sencillo: una imagen visible a la vez, fade suave,
+    botones anterior/siguiente y puntitos indicadores.
+   =========================================== */
+
+/* Contenedor principal del carrusel (sección héroe) */
+.hero-carousel {
+    /* tamaño grande de portada */
+    height: 60vh;                 /* alto relativo a la pantalla */
+    min-height: 480px;            /* asegura buen tamaño en desktop */
+    max-height: 720px;            /* evita crecer demasiado en monitores grandes */
+
+    position: relative;
+    overflow: hidden;             /* oculta desbordes de las imágenes */
+    border-radius: 24px;          /* esquinas redondeadas */
+    box-shadow: 0 25px 60px rgba(0,0,0,.25); /* sombra vistosa */
+    background: #111;             /* color de fondo de seguridad */
+}
+
+/* Pista que contiene los slides */
+.hero-carousel .slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Cada slide como “lámina” a pantalla dentro del hero */
+.hero-carousel .hero-slide {
+    position: absolute;
+    inset: 0;                     /* top/right/bottom/left = 0 */
+    background-size: cover;       /* cubre todo el contenedor */
+    background-position: center;  /* centrado visual */
+    background-repeat: no-repeat; /* no repetir imagen */
+
+    opacity: 0;                   /* por defecto no visible */
+    transform: scale(1.02);       /* leve zoom para dar profundidad en el fade */
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+/* El slide activo (visible) */
+.hero-carousel .hero-slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Capa oscura opcional para legibilidad de textos encima */
+.hero-carousel .scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,.45), rgba(0,0,0,.15));
+    pointer-events: none;         /* no bloquea clicks */
+}
+
+/* Contenido centrado (titular, subtítulo, botón) */
+.hero-carousel .content {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;          /* centra vertical/horizontal */
+    text-align: center;
+    padding: 0 1.25rem;           /* respiración lateral en móviles */
+    color: #fff;                  /* texto en blanco sobre scrim */
+}
+
+.hero-carousel .content .title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: .4px;
+    margin-bottom: .75rem;
+}
+
+.hero-carousel .content .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.375rem);
+    max-width: 60ch;
+    opacity: .9;
+    margin: 0 auto 1.5rem;
+}
+
+/* Botones anterior / siguiente */
+.hero-carousel .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 48px;
+    width: 48px;
+    border-radius: 999px;
+    border: 0;
+    background: rgba(255,255,255,.9);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    user-select: none;
+}
+
+.hero-carousel .nav-btn:hover {
+    transform: translateY(-50%) scale(1.06);
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(0,0,0,.28);
+}
+
+.hero-carousel .nav-prev { left: 16px; }
+.hero-carousel .nav-next { right: 16px; }
+
+/* Icono flecha simple con CSS (▸) usando pseudo-elemento */
+.hero-carousel .nav-btn::before {
+    content: "›";                 /* flecha derecha por defecto */
+    font-size: 28px;
+    line-height: 1;
+    color: #111;
+}
+.hero-carousel .nav-prev::before { content: "‹"; }
+
+/* Puntitos indicadores (bullets) */
+.hero-carousel .dots {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    padding: 6px 10px;
+    background: rgba(17,17,17,.35);
+    backdrop-filter: blur(6px);
+    border-radius: 999px;
+}
+
+.hero-carousel .dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.55);
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease, opacity .2s ease;
+    opacity: .85;
+}
+.hero-carousel .dot:hover { transform: scale(1.1); opacity: 1; }
+.hero-carousel .dot.is-active { background: #fff; opacity: 1; }
+
+/* Responsivo: reduce alto en pantallas pequeñas */
+@media (max-width: 1024px) {
+    .hero-carousel {
+        height: 52vh;
+        min-height: 420px;
+        border-radius: 20px;
+    }
+}
+@media (max-width: 768px) {
+    .hero-carousel {
+        height: 44vh;
+        min-height: 360px;
+        border-radius: 18px;
+    }
+    .hero-carousel .nav-btn { height: 44px; width: 44px; }
+}
+@media (max-width: 480px) {
+    .hero-carousel {
+        height: 40vh;
+        min-height: 320px;
+        border-radius: 16px;
+    }
+    .hero-carousel .dots { gap: 8px; padding: 5px 8px; }
+    .hero-carousel .dot  { height: 9px; width: 9px; }
+}
+
+    .hero-carousel .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* recorta manteniendo proporción */
+    display: block;
+    }
+
+
+        .search-vortex {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255,255,255,0.2);
+        }
+
+        .vortex-input {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .vortex-input:focus {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-image: linear-gradient(135deg, #FF6B6B, #4ECDC4) 1;
+        }
+
+        .skill-orb {
+            width: 100px;   /* antes 80px → ahora más grandes */
+            height: 100px;  /* mismo cambio que el ancho */
+            border-radius: 50%; /* mantiene forma circular */
+
+            
+            background: linear-gradient(135deg, #3B82F6, #22D3EE); 
+        
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;         /* texto blanco */
+            font-weight: 600;
+            font-size: 1rem;      /* un poco más grande el texto */
+
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* sombra más marcada */
+        }
+
+        .skill-orb::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.3s ease;
+            transform: rotate(45deg);
+        }
+
+        .skill-orb:hover::before {
+            animation: shine 1.5s ease;
+        }
+
+        .skill-orb:hover {
+            background: linear-gradient(135deg, #2563EB, #06B6D4); 
+            /* equivalentes a tailwind: from-blue-600 to-cyan-500 */
+            transform: translateY(-6px) scale(1.08);
+            box-shadow: 0 18px 32px rgba(0, 0, 0, 0.25);
+}
+
+
+    /* ============================================
+    SECCIÓN DE LOGOS – Clientes / Aliados
+    Variante: grid responsivo con efecto gris → color
+    ============================================ */
+
+    /* Variante para cuando hay solo un logo */
+/* Variante para cuando hay solo un logo */
+.partner-single {
+  display: flex;
+  justify-content: center; /* centra horizontal */
+  align-items: center;     /* centra vertical */
+  padding: 60px 0;         /* más aire arriba/abajo */
+}
+
+.partner-single img {
+  max-height: 180px;   /* LOGO GRANDE (puedes subirlo a 200 o 220 si quieres más) */
+  width: auto;
+  object-fit: contain;
+}
+
+    /* Título centrado */
+    .partners-title {
+    text-align: center;
+    font-weight: 800;
+    color: #163b2a;
+    letter-spacing: .4px;
+    margin: 0 0 28px;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    }
+
+/* -------------------------------------------------------------- */
+
+
+    #membresias {
+    background: linear-gradient(180deg, #ffffff 0 40px, #f9fafb 40px 100%);
+    }
+
+
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .profile-pyramid {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 2px transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-pyramid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
+        }
+
+        .profile-pyramid:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.15),
+                inset 0 0 0 2px rgba(255, 107, 107, 0.1);
+        }
+
+        .gold-pyramid {
+            border-top: 4px solid #FFD700;
+        }
+
+        .silver-pyramid {
+            border-top: 4px solid #C0C0C0;
+        }
+
+        .free-pyramid {
+            border-top: 4px solid #6c757d;
+        }
+
+        .membership-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transform: rotate(15deg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .gold-badge {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+        }
+
+        .silver-badge {
+            background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+            color: #000;
+        }
+
+        .free-badge {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+        }
+
+        .footer-geometric {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-geometric::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+        }
+
+        .social-hexagon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: all 0.3s ease;
+        }
+
+        .social-hexagon:hover {
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .shape-divider {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .shape-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 30px;
+        }
+
+        .shape-divider .shape-fill {
+            fill: #FFFFFF;
+        }
+
+        @media (max-width: 768px) {
+            .skill-orbs {
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .skill-orb {
+                width: 60px;
+                height: 60px;
+                font-size: 0.8rem;
+            }
+            
+            .carousel-3d {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .search-vortex {
+                padding: 20px;
+            }
+            
+            .skill-orb {
+                width: 50px;
+                height: 50px;
+                font-size: 0.7rem;
+            }
+        }
+
+
+        /* ================================
+        ACERCA DE — Estilo mejorado
+        (Funciona con tu HTML actual)
+        ================================ */
+
+        /* Fondo sutil con brillos */
+        #acercade {
+        position: relative;
+        overflow: hidden;
+        }
+        #acercade::before,
+        #acercade::after {
+        content: "";
+        position: absolute;
+        inset: -25%;
+        pointer-events: none;
+        background:
+            radial-gradient(700px 220px at 20% 0%, rgba(59,130,246,.10), transparent 60%),
+            radial-gradient(600px 200px at 85% 100%, rgba(34,211,238,.10), transparent 60%);
+        z-index: 0;
+        }
+
+        /* Contenido por encima del fondo decorativo */
+        #acercade > .max-w-6xl {
+        position: relative;
+        z-index: 1;
+        }
+
+        /* Título con degradado “epic” */
+        #acercade h2 {
+        background: linear-gradient(135deg, #0ea5e9, #22d3ee 60%, #14b8a6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: .3px;
+        }
+
+        /* Párrafo intro un poco más legible */
+        #acercade p {
+        line-height: 1.7;
+        }
+
+        /* ========== “Skills / Clubs” (tus cajas con BG Tailwind) ========== */
+        /* Realza con aro suave y animación de entrada sutil */
+        #acercade .rounded-xl.shadow.text-left.text-white {
+        position: relative;
+        isolation: isolate;
+        box-shadow: 0 18px 40px rgba(2, 132, 199, .25);
+        transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+        }
+        #acercade .rounded-xl.shadow.text-left.text-white::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;                 /* aro */
+        background: linear-gradient(135deg, rgba(255,255,255,.45), rgba(255,255,255,.10));
+        -webkit-mask: 
+            linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;      /* deja solo el borde finito */
+        pointer-events: none;
+        }
+        #acercade .rounded-xl.shadow.text-left.text-white:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 24px 60px rgba(2, 132, 199, .3);
+        filter: saturate(1.05);
+        }
+
+        /* Titulitos internos de esos bloques */
+        #acercade .rounded-xl.shadow.text-left.text-white h3 {
+        letter-spacing: .2px;
+        }
+
+        /* ========== Creadores (tus tarjetas blancas) ========== */
+        #acercade .flex.flex-wrap .bg-white.rounded-xl.shadow.w-64 {
+        height: 100%;                     /* por si el texto crece */
+        border-color: #67e8f9;            /* cyan-300 un pelín más vivo */
+        box-shadow: 0 16px 36px rgba(0,0,0,.08);
+        transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        }
+        #acercade .flex.flex-wrap .bg-white.rounded-xl.shadow.w-64:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 60px rgba(0,0,0,.12);
+        border-color: #22d3ee;            /* resalta en hover */
+        }
+        #acercade .flex.flex-wrap .bg-white.rounded-xl.shadow.w-64 h4 {
+        letter-spacing: .2px;
+        }
+
+        /* ========== Misión / Visión / Valores (tus 3 cards) ========== */
+        #acercade .grid.md\:grid-cols-3 .bg-white.rounded-xl.shadow {
+        position: relative;
+        border-color: #67e8f9;
+        transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        box-shadow: 0 14px 34px rgba(0,0,0,.08);
+        }
+        #acercade .grid.md\:grid-cols-3 .bg-white.rounded-xl.shadow:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 60px rgba(0,0,0,.12);
+        border-color: #22d3ee;
+        }
+        #acercade .grid.md\:grid-cols-3 h4 {
+        letter-spacing: .2px;
+        }
+
+        /* Lista de valores más prolija */
+        #acercade .grid.md\:grid-cols-3 ul {
+        text-align: left;                 /* en desktop, queda prolijo */
+        display: inline-block;            /* centra el bloque en text-center */
+        }
+        #acercade .grid.md\:grid-cols-3 ul li {
+        padding-left: .25rem;
+        }
+        #acercade .grid.md\:grid-cols-3 ul li::marker {
+        content: "✔ ";
+        color: #0ea5e9;                   /* azulito consistente */
+        }
+
+        /* ========== Responsive finos ========== */
+        @media (max-width: 768px) {
+        #acercade h2 { font-size: 1.9rem; }
+        #acercade .flex.flex-wrap .bg-white.rounded-xl.shadow.w-64 { width: 100%; max-width: 22rem; }
+        #acercade .grid.md\:grid-cols-3 ul { text-align: center; } /* en móvil céntralo */
+        }
+
+    /* Creador con avatar inicial (si no hay foto) */
+    .creator-badge {
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;       /* centra el texto dentro */
+    margin: 0 auto 12px;       /* centra el círculo y agrega espacio abajo */
+    font-weight: 700;
+    color: #0b1220;
+    background: linear-gradient(135deg, #93c5fd, #67e8f9);
+    box-shadow: 0 8px 20px rgba(59,130,246,.25);
+    }
+
+    /* =========================================
+    ¿CÓMO FUNCIONA?
+    Estilos de layout + look SKLUBS
+    ========================================= */
+
+    /* Fondo sutil*/
+    #como-funciona {
+    position: relative;
+    isolation: isolate;
+    }
+    #como-funciona::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    z-index: -1;
+    }
+
+    /* Grid responsivo con conectores entre tarjetas */
+    .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr 48px 1fr; /* card / connector / card / connector / card */
+    gap: 20px;
+    align-items: center;
+    }
+    @media (max-width: 900px) {
+    .how-grid {
+        grid-template-columns: 1fr; /* stack */
+        gap: 16px;
+    }
+    }
+
+    /* Tarjeta del paso */
+    .how-card {
+    background: #fff;
+    border-radius: 1rem;            /* ~ rounded-2xl */
+    padding: 1.5rem;                /* ~ p-6 */
+    border: 2px solid #67e8f9;      /* cyan-300 */
+    box-shadow: 0 16px 36px rgba(0,0,0,.08);
+    text-align: left;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .how-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 60px rgba(0,0,0,.12);
+    border-color: #22d3ee;          /* cyan-400 on hover */
+    }
+
+    /* Badge numerado con aro degradado */
+    .how-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    color: #0b1220;
+    background: linear-gradient(135deg, #93c5fd, #67e8f9);
+    box-shadow: 0 8px 20px rgba(59,130,246,.25);
+    margin-bottom: 10px;
+    }
+
+    /* Título y texto del paso */
+    .how-title {
+    font-size: 1.125rem;            /* ~ text-lg */
+    font-weight: 700;
+    color: #0f172a;                 /* slate-900 */
+    margin-bottom: .35rem;
+    letter-spacing: .2px;
+    }
+    .how-text {
+    color: #334155;                 /* slate-700 */
+    line-height: 1.65;
+    }
+
+    /* Conector entre tarjetas (línea con degradado) */
+    .how-connector {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #3b82f6, #22d3ee 65%, #14b8a6);
+    opacity: .9;
+    }
+    @media (max-width: 900px) {
+    .how-connector {
+        width: 60px;
+        height: 6px;
+        justify-self: center;
+    }
+    }
+
+    /* CTAs coherentes con tu paleta */
+    .how-cta {
+    display: inline-block;
+    border-radius: 999px;
+    padding: .85rem 1.25rem;
+    font-weight: 700;
+    transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+    text-decoration: none;
+    }
+    .how-cta--primary {
+    color: #fff;
+    background: linear-gradient(135deg, #3b82f6, #22d3ee);
+    box-shadow: 0 12px 24px rgba(34,211,238,.25);
+    }
+    .how-cta--primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 34px rgba(34,211,238,.3);
+    }
+    .how-cta--ghost {
+    color: #0f172a;
+    background: #fff;
+    border: 2px solid #67e8f9;
+    }
+    .how-cta--ghost:hover {
+    transform: translateY(-1px);
+    border-color: #22d3ee;
+    }
+
+    /* Reutiliza tu efecto de título degradado (si no lo tenés, lo defino) */
+    .title-gradient {
+    background: linear-gradient(135deg, #0ea5e9, #22d3ee 60%, #14b8a6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    }
+
+    /* ===== GOLD – tarjetas nuevas con cover ===== */
+    .gold-members .members-grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:24px}
+    @media(min-width:768px){.gold-members .members-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1024px){.gold-members .members-grid{grid-template-columns:repeat(3,1fr)}}
+
+    .gold-members .member-card{
+    background:#fff;border-radius:20px;overflow:hidden;
+    box-shadow:0 18px 38px rgba(0,0,0,.10);
+    border:1px solid rgba(103,232,249,.35);
+    display:flex;flex-direction:column;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .gold-members .member-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 28px 60px rgba(0,0,0,.16);
+    border-color:#22d3ee;
+    }
+
+    /* cover con imagen */
+    .gold-members .member-cover{position:relative;aspect-ratio:16/9;background:#0f172a}
+    .gold-members .member-cover img{width:100%;height:100%;object-fit:cover;display:block}
+    .gold-members .member-badge{
+    position:absolute;top:14px;left:14px;padding:.35rem .6rem;border-radius:999px;
+    font-weight:800;font-size:.8rem;color:#0b1220;box-shadow:0 8px 18px rgba(0,0,0,.18)
+    }
+    .gold-members .member-badge--gold{
+    background:linear-gradient(135deg,#f59e0b,#fbbf24); /* dorado cálido */
+    }
+
+    /* cuerpo */
+    .gold-members .member-body{position:relative;padding:18px 18px 16px}
+    .gold-members .member-avatar{
+    position:absolute;top:-42px;right:18px;width:84px;height:84px;border-radius:999px;overflow:hidden;
+    border:3px solid #fff;box-shadow:0 10px 26px rgba(0,0,0,.2)
+    }
+    .gold-members .member-avatar img{width:100%;height:100%;object-fit:cover}
+
+    .gold-members .member-name{font-weight:800;font-size:1.25rem;color:#0f172a;margin:4px 0 2px}
+    .gold-members .member-role{color:#334155;font-weight:600;margin-bottom:10px}
+    .gold-members .member-bio{color:#475569;line-height:1.6;margin:0 0 12px}
+
+    /* footer */
+    .gold-members .member-footer{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .gold-members .member-rate{font-weight:800;color:#0ea5e9}
+    .gold-members .member-cta{
+    background:linear-gradient(135deg,#3B82F6,#22D3EE);color:#fff;border:0;border-radius:12px;
+    padding:.6rem 1rem;font-weight:800;cursor:pointer;box-shadow:0 12px 24px rgba(34,211,238,.25);
+    transition:transform .15s ease, box-shadow .15s ease
+    }
+    .gold-members .member-cta:hover{transform:translateY(-1px);box-shadow:0 18px 34px rgba(34,211,238,.3)}
+
+    /* ==== GRID unificado para todas las secciones de miembros ==== */
+    .gold-members .members-grid,
+    .silver-members .members-grid,
+    .free-members  .members-grid{
+    display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:24px
+    }
+    @media(min-width:768px){
+    .gold-members .members-grid,
+    .silver-members .members-grid,
+    .free-members  .members-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(min-width:1024px){
+    .gold-members .members-grid,
+    .silver-members .members-grid,
+    .free-members  .members-grid{grid-template-columns:repeat(3,1fr)}
+    }
+
+    /* ==== CARD base (compartida) ==== */
+    .gold-members .member-card,
+    .silver-members .member-card,
+    .free-members  .member-card{
+    background:#fff;border-radius:20px;overflow:hidden;
+    box-shadow:0 18px 38px rgba(0,0,0,.10);
+    border:1px solid rgba(103,232,249,.35);
+    display:flex;flex-direction:column;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .gold-members .member-card:hover,
+    .silver-members .member-card:hover,
+    .free-members  .member-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 28px 60px rgba(0,0,0,.16);
+    border-color:#22d3ee;
+    }
+
+    .member-body{position:relative;padding:18px 18px 16px}
+    .member-name{font-weight:800;font-size:1.25rem;color:#0f172a;margin:4px 0 2px}
+    .member-role{color:#334155;font-weight:600;margin-bottom:8px}
+    .member-bio{color:#475569;line-height:1.6;margin:0 0 12px}
+    .member-footer{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .member-rate{font-weight:800;color:#0ea5e9}
+    .member-cta{
+    background:linear-gradient(135deg,#3B82F6,#22D3EE);color:#fff;border:0;border-radius:12px;
+    padding:.6rem 1rem;font-weight:800;cursor:pointer;box-shadow:0 12px 24px rgba(34,211,238,.25);
+    transition:transform .15s ease, box-shadow .15s ease
+    }
+    .member-cta:hover{transform:translateY(-1px);box-shadow:0 18px 34px rgba(34,211,238,.3)}
+    .member-cta.member-cta--ghost{background:#fff;color:#0f172a;border:2px solid #67e8f9;box-shadow:none}
+    .member-cta.member-cta--ghost:hover{border-color:#22d3ee}
+
+    /* ==== TAGS (etiquetas para filtro) ==== */
+    .member-tags{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+    .member-tags .tag{
+    font-size:.75rem;font-weight:700;letter-spacing:.2px;
+    padding:.25rem .55rem;border-radius:999px;
+    background:rgba(14,165,233,.12);color:#0ea5e9;border:1px solid rgba(14,165,233,.25)
+    }
+
+    /* ==== GOLD: cover + badge + avatar ==== */
+    .gold-members .member-cover{position:relative;aspect-ratio:16/9;background:#0f172a}
+    .gold-members .member-cover img{width:100%;height:100%;object-fit:cover;display:block}
+    .gold-members .member-badge{
+    position:absolute;top:14px;left:14px;padding:.35rem .6rem;border-radius:999px;
+    font-weight:800;font-size:.8rem;color:#0b1220;box-shadow:0 8px 18px rgba(0,0,0,.18)
+    }
+    .gold-members .member-badge--gold{background:linear-gradient(135deg,#f59e0b,#fbbf24)} /* dorado cálido */
+    .gold-members .member-avatar{
+    position:absolute;top:-42px;right:18px;width:84px;height:84px;border-radius:999px;overflow:hidden;
+    border:3px solid #fff;box-shadow:0 10px 26px rgba(0,0,0,.2)
+    }
+    .gold-members .member-avatar img{width:100%;height:100%;object-fit:cover}
+
+    /* ==== SILVER: ribbon superior + layout lateral ==== */
+    .silver-members .member-ribbon{
+    height:10px;background:linear-gradient(90deg,#c0c0c0,#e5e7eb);
+    }
+    .silver-members .member-ribbon--silver{position:relative;text-indent:-9999px}
+    .silver-members .member-row{display:flex;gap:16px;align-items:flex-start;margin-top:10px}
+    .silver-members .member-thumb{
+    width:84px;height:84px;border-radius:999px;border:3px solid #e5e7eb;object-fit:cover;flex:0 0 auto
+    }
+
+    /* ==== FREE: diseño mínimo ==== */
+    .free-members .member-row{display:flex;gap:16px;align-items:flex-start}
+    .free-members .member-thumb{
+    width:72px;height:72px;border-radius:999px;border:3px solid #e5e7eb;object-fit:cover;flex:0 0 auto
+    }
+
+
+    /* ============================
+    HARDENING RESPONSIVE — Móviles
+
+   ============================ */
+
+    /* Scrolleo suave y compensación por navbar fijo */
+    html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px; /* alto aprox. del navbar en desktop */
+    }
+    @media (max-width: 640px) {
+    html { scroll-padding-top: 76px; } /* navbar un poco más chico en mobile */
+    }
+
+    /* Evita scroll horizontal por desbordes */
+    html, body { overflow-x: hidden; }
+
+    /* Navbar en pantallas pequeñas */
+    @media (max-width: 640px) {
+    .navbar { padding-top: .75rem; padding-bottom: .75rem; }
+    .navbar .max-w-7xl { gap: .75rem; }
+    .navbar img[alt="SKLUBS Logo"] { height: 52px; } /* logo más chico */
+    /* compactar los 2 botones grandes */
+    .navbar .flex.items-center.space-x-4 > button {
+        padding: .5rem .85rem;
+        font-size: .9rem;
+        border-radius: 999px;
+        box-shadow: none;
+    }
+    .navbar .flex.items-center.space-x-4 { gap: .5rem; }
+    /* Si igual te quedan apretados, podés ocultar el registro en xs */
+    @media (max-width: 380px) {
+        .navbar .flex.items-center.space-x-4 button:last-child { display: none; }
+    }
+    }
+
+    /* Carrusel (más bajo en móviles muy chicos) */
+    @media (max-width: 640px) {
+    .hero-carousel { height: 42vh; min-height: 300px; border-radius: 14px; }
+    .hero-carousel .content .title { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+    .hero-carousel .content .subtitle { font-size: clamp(.9rem, 3.8vw, 1.05rem); }
+    .hero-carousel .nav-btn { height: 40px; width: 40px; }
+    }
+
+    /* Sección “¿Cómo funciona?”: una sola columna y paddings más cómodos */
+    @media (max-width: 900px) {
+    #como-funciona { padding-left: 1rem; padding-right: 1rem; }
+    }
+    @media (max-width: 640px) {
+    .how-card { padding: 1rem; }
+    .how-title { font-size: 1rem; }
+    .how-text { font-size: .95rem; }
+    }
+
+    /* Buscador (Vortex) */
+    @media (max-width: 640px) {
+    .search-vortex { padding: 18px; border-radius: 20px; }
+    .vortex-input input { padding: .9rem 1.1rem; font-size: 1rem; }
+    .skill-orbs { gap: 12px; flex-wrap: wrap; }
+    .skill-orb { width: 72px; height: 72px; font-size: .8rem; box-shadow: 0 8px 16px rgba(0,0,0,.18); }
+    }
+
+    /* Grid unificado de miembros (ya tenés, reforzamos en xs) */
+    @media (max-width: 640px) {
+    .gold-members .members-grid,
+    .silver-members .members-grid,
+    .free-members  .members-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    /* GOLD – Mejoras para mobile: avatar y footer */
+    @media (max-width: 640px) {
+    .gold-members .member-cover { aspect-ratio: 16/10; }
+    .gold-members .member-avatar {
+        position: static; margin: -42px auto 0; /* baja el avatar y lo centra */
+        display: block;
+    }
+    .gold-members .member-body { padding-top: 10px; text-align: center; }
+    .gold-members .member-footer { flex-direction: column; gap: 10px; }
+    .gold-members .member-cta { width: 100%; }
+    }
+
+    /* SILVER – layout lateral → vertical en mobile */
+    @media (max-width: 640px) {
+    .silver-members .member-row { flex-direction: column; align-items: center; text-align: center; }
+    .silver-members .member-thumb { width: 92px; height: 92px; }
+    .silver-members .member-footer { flex-direction: column; gap: 10px; }
+    .silver-members .member-cta { width: 100%; }
+    }
+
+    /* BRONZE (free) – layout vertical compacto */
+    @media (max-width: 640px) {
+    .free-members .member-row { flex-direction: column; align-items: center; text-align: center; }
+    .free-members .member-thumb { width: 88px; height: 88px; }
+    .free-members .member-footer { flex-direction: column; gap: 10px; }
+    .free-members .member-cta { width: 100%; }
+    }
+
+    /* Etiquetas (tags) — más densas en móvil */
+    @media (max-width: 640px) {
+    .member-tags { justify-content: center; gap: 6px; }
+    .member-tags .tag { font-size: .7rem; padding: .2rem .5rem; }
+    }
+
+    /* Partners / logo grande — que no se salga en xs */
+    .partner-single img { max-width: 100%; height: auto; }
+
+    /* Membresías — cartas con aire y CTA full width en móvil */
+    @media (max-width: 640px) {
+    #membresias .grid { gap: 14px; }
+    #membresias .bg-white.rounded-2xl.shadow-lg { padding: 1.25rem; min-height: auto; }
+    #membresias h3 { font-size: 1.25rem; }
+    #membresias p.text-4xl { font-size: 1.75rem; }
+    #membresias ul { font-size: .95rem; }
+    #membresias button { width: 100%; margin-top: 1rem; }
+    }
+
+    /* Acerca de — tipografías y paddings */
+    @media (max-width: 640px) {
+    #acercade { padding-left: 1rem; padding-right: 1rem; }
+    #acercade h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+    #acercade .grid.md\:grid-cols-2, 
+    #acercade .grid.md\:grid-cols-3 { gap: 1rem; }
+    }
+
+    /* Footer — columnas apiladas con buen espacio */
+    @media (max-width: 640px) {
+    .footer-geometric { padding-top: 40px; }
+    .footer-geometric .grid { gap: 18px; }
+    }
+
+    /* Pequeños refinamientos tipográficos globales en xs */
+    @media (max-width: 360px) {
+    h2.text-4xl { font-size: 1.6rem; }
+    h3.text-3xl { font-size: 1.35rem; }
+    .member-name { font-size: 1.1rem; }
+    .member-role, .member-bio { font-size: .95rem; }
+    }
+
