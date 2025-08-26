@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKLUBS - Demuéstralo, Poténcialo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="Estilos.css" rel="stylesheet">
+
+</head>
+<body class="min-h-screen geometric-bg">
+
+    <!-- Navbar yoo m --> 
+    <nav class="navbar fixed top-0 w-full z-50 py-5 px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        
+        <!-- Logo más grande -->
+        <div class="flex items-center space-x-4">
+        <img src="Recursos/sklubs_logo.png" alt="SKLUBS Logo" class="h-20 w-auto mt-1">
+        </div>
+
+        <!-- Links -->
+        <div class="hidden md:flex items-center space-x-10">
+        <a href="#" class="text-gray-800 hover:text-teal-400 transition-colors font-medium text-lg">Inicio</a>
+        <a href="#acercade" class="text-gray-800 hover:text-teal-400 transition-colors font-medium text-lg">Sobre nosotros</a>
+        <a href="#membresias" class="text-gray-800 hover:text-teal-400 transition-colors font-medium text-lg">Membresías</a>
+        <a href="#estudiantes" class="text-gray-800 hover:text-teal-400 transition-colors font-medium text-lg">Estudiantes</a>
+        </div>
+
+        <!-- Botones juntos -->
+        <div class="flex items-center space-x-4">
+        <button class="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-8 py-3 rounded-full font-semibold hover:from-blue-600 hover:to-cyan-500 transition-all transform hover:scale-105 shadow-lg">     
+            <i class="fas fa-sign-in-alt mr-2"></i> Iniciar Sesión 
+        </button>  
+
+        <button class="bg-gradient-to-r from-cyan-400 to-teal-400 text-white px-8 py-3 rounded-full font-semibold hover:from-cyan-500 hover:to-teal-500 transition-all transform hover:scale-105 shadow-lg">     
+            <i class="fas fa-user-plus mr-2"></i> Registrarse 
+        </button>
+        </div>
+    </div>
+    </nav>
+
+
+    <!-- Carrusel de imagenes-->
+    <section class="pt-36 pb-10 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="hero-carousel">
+        <div class="slides">
+            <div class="hero-slide is-active" style="background-image:url('Recursos/slide1.jpg');"></div>
+            <div class="hero-slide"         style="background-image:url('Recursos/slide2.jpg');"></div>
+            <div class="hero-slide"         style="background-image:url('Recursos/slide3.jpg');"></div>
+            <div class="hero-slide"         style="background-image:url('Recursos/slide4.jpg');"></div>
+            
+        </div>
+
+        <div class="scrim"></div>
+
+        <div class="content">
+            <div>
+            <h2 class="title">Demuéstralo, Poténcialo</h2>
+            <p class="subtitle">"Tus talentos no se esconden, aquí brillan"</p>
+            </div>
+        </div>
+
+        <button class="nav-btn nav-prev" aria-label="Anterior"></button>
+        <button class="nav-btn nav-next" aria-label="Siguiente"></button>
+
+        <div class="dots"></div>
+        </div>
+    </div>
+    </section>
+
+
+    <!-- ¿Cómo funciona? -->
+    <section id="como-funciona" class="px-6 py-16">
+    <div class="max-w-6xl mx-auto text-center">
+        <h3 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 title-gradient">¿Cómo funciona?</h3>
+        <p class="text-gray-600 max-w-3xl mx-auto mb-12">
+        En 3 pasos simples: registrate, mostrá o encontrá habilidades y conectá para aprender o enseñar.
+        </p>
+
+        <div class="how-grid">
+        <!-- Paso 1 -->
+        <div class="how-card">
+            <div class="how-badge">1</div>
+            <h4 class="how-title">Registrate</h4>
+            <p class="how-text">Crea tu perfil y elegí si querés <span class="font-semibold">enseñar</span>, <span class="font-semibold">aprender</span>… o ambos.</p>
+        </div>
+
+        <!-- Conector -->
+        <div class="how-connector" aria-hidden="true"></div>
+
+        <!-- Paso 2 -->
+        <div class="how-card">
+            <div class="how-badge">2</div>
+            <h4 class="how-title">Publicá o buscá</h4>
+            <p class="how-text">Muestra tu talento o filtrá por alguna <span class="font-semibold">habilidad, categoría u horario</span>.</p>
+        </div>
+
+        <!-- Conector -->
+        <div class="how-connector" aria-hidden="true"></div>
+
+        <!-- Paso 3 -->
+        <div class="how-card">
+            <div class="how-badge">3</div>
+            <h4 class="how-title">Conectá y crecé</h4>
+            <p class="how-text">Haz de la comunidad universitaria un espacio donde ningún talento pase desapercibido.</p>
+        </div>
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href="#membresias" class="how-cta how-cta--primary">Empieza ahora</a>
+        <a href="#acercade" class="how-cta how-cta--ghost">Saber más</a>
+        </div>
+    </div>
+    </section>
+
+
+
+<!-- Vortex Search Filter -->
+    <section class="py-16 px-6">
+    <div class="max-w-5xl mx-auto">
+        <div class="search-vortex">
+        <h3 class="text-3xl font-bold text-center mb-10 text-gray-800">Descubrí nuevas pasiones 🔎</h3>
+
+        <div class="relative mb-8">
+            <div class="vortex-input rounded-full p-1">
+            <input type="text" placeholder="¿Qué buscás aprender hoy?" class="w-full px-8 py-5 rounded-full border-none outline-none bg-transparent text-lg">
+            </div>
+            <i class="fas fa-search absolute right-8 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl"></i>
+        </div>
+
+        <div class="skill-orbs flex justify-center gap-6 mb-6">
+            <div class="skill-orb" data-skill="Deporte"><span>Deporte</span></div>
+            <div class="skill-orb" data-skill="Arte/diseño"><span>Arte/diseño</span></div>
+            <div class="skill-orb" data-skill="Música"><span>Música</span></div>
+            <div class="skill-orb" data-skill="Tutorías"><span>Tutorías</span></div>
+            <div class="skill-orb" data-skill="Idiomas"><span>Idiomas</span></div>
+            <div class="skill-orb" data-skill="Cocina"><span>Cocina</span></div>
+            <div class="skill-orb" data-skill="Ciencias"><span>Ciencias</span></div>
+            <div class="skill-orb" data-skill="Tecnología"><span>Tecnología</span></div>
+        </div>
+
+        <div class="text-center">
+        <button onclick="location.reload();" 
+                class="px-6 py-2 rounded-full font-semibold bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800 hover:from-gray-400 hover:to-gray-500 transition-all">
+            Limpiar filtros
+        </button>
+        </div>
+        </div>
+    </div>
+    </section>
+
+
+    <!-- Gold Members Section (NUEVA) -->
+    <section id="estudiantes" class="py-20 px-6 gold-members">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16 text-yellow-500">🌟 Miembros Gold</h2>
+
+        <div class="members-grid">
+        <!-- Gold 1 -->
+        <article class="member-card" data-tags="gold ux ui figma mobile diseño">
+            <div class="member-cover">
+            <img src="Recursos/isaac.jpg" alt="Cover Isaac Fernández">
+            <span class="member-badge member-badge--gold">GOLD</span>
+            </div>
+            <div class="member-body">
+            <div class="member-avatar"><img src="https://placehold.co/200x200/111/fff?text=IF" alt="Isaac Fernández"></div>
+            <h3 class="member-name">Isaac Fernández</h3>
+            <p class="member-role">Pintor y Diseñador</p>
+            <p class="member-bio">Experiencia con pintura al óleo, acuarela y cubismo.</p>
+
+            <div class="member-tags">
+                <span class="tag">Arte/Diseño</span><span class="tag">Pintura</span><span class="tag">Comisiones</span>
+            </div>
+
+            <div class="member-footer">
+                <span class="member-rate">Precio base ₡1500</span>
+                <button class="member-cta">Consultar</button>
+            </div>
+            </div>
+        </article>
+
+        <!-- Gold 2 -->
+        <article class="member-card" data-tags="gold ai ml python datasets api">
+            <div class="member-cover">
+            <img src="Recursos/jocs.jpg" alt="Cover Jocsan Fonseca">
+            <span class="member-badge member-badge--gold">GOLD</span>
+            </div>
+            <div class="member-body">
+            <div class="member-avatar"><img src="https://placehold.co/200x200/111/fff?text=JF" alt="Jocsan Fonseca"></div>
+            <h3 class="member-name">Jocsan Fonseca</h3>
+            <p class="member-role">Estudiante de TI</p>
+            <p class="member-bio">Carísmático, Sociable, Doy tutorias de programación o diferentes cursos</p>
+
+            <div class="member-tags">
+                <span class="tag">Tecnología</span><span class="tag">Tutorías</span><span class="tag">Python</span><span class="tag">C#</span><span class="tag">Java</span>
+            </div>
+
+            <div class="member-footer">
+                <span class="member-rate">Precio ₡2000</span>
+                <button class="member-cta">Consultar</button>
+            </div>
+            </div>
+        </article>
+
+        <!-- Gold 3 -->
+        <article class="member-card" data-tags="gold growth ads seo analytics">
+            <div class="member-cover">
+            <img src="Recursos/tito.jpg" alt="Cover Dylan Redondo">
+            <span class="member-badge member-badge--gold">GOLD</span>
+            </div>
+            <div class="member-body">
+            <div class="member-avatar"><img src="https://placehold.co/200x200/111/fff?text=DR" alt="Dylan Redondo"></div>
+            <h3 class="member-name">Dylan Redondo</h3>
+            <p class="member-role">Estudiante de TI</p>
+            <p class="member-bio">Me apasiona la administración de bases de datos y la programación con node.js</p>
+
+            <div class="member-tags">
+                <span class="tag">Tecnología</span><span class="tag">Tutorías</span><span class="tag">Bases de datos</span><span class="tag">Node.js</span>
+            </div>
+
+            <div class="member-footer">
+                <span class="member-rate">Precio base ₡2100/hr</span>
+                <button class="member-cta">Consultar</button>
+            </div>
+            </div>
+        </article>
+        </div>
+    </div>
+    </section>
+
+    <!-- Silver Members Section (NUEVA) -->
+        <section class="py-20 px-6 silver-members">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-700">📌 Miembros Silver</h2>
+
+            <div class="members-grid">
+            <article class="member-card" data-tags="silver foto producto retrato lightroom">
+                <header class="member-ribbon member-ribbon--silver">SILVER</header>
+                <div class="member-body">
+                <div class="member-row">
+                    <img class="member-thumb" src="https://placehold.co/160x160/C0C0C0/000?text=MP" alt="Miguel Pérez">
+                    <div>
+                    <h3 class="member-name">Miguel Pérez</h3>
+                    <p class="member-role">Fotógrafo</p>
+                    <p class="member-bio">Retrato y producto para marcas y emprendimientos.</p>
+                    <div class="member-tags">
+                        <span class="tag">Arte/Diseño</span><span class="tag">Retrato</span><span class="tag">Lightroom</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="member-footer">
+                    <span class="member-rate">Precio Base ₡4500</span>
+                    <button class="member-cta">Consultar</button>
+                </div>
+                </div>
+            </article>
+
+            <article class="member-card" data-tags="silver idiomas inglés francés alemán tutor">
+                <header class="member-ribbon member-ribbon--silver">SILVER</header>
+                <div class="member-body">
+                <div class="member-row">
+                    <img class="member-thumb" src="https://placehold.co/160x160/C0C0C0/000?text=SG" alt="Sofía García">
+                    <div>
+                    <h3 class="member-name">Sofía García</h3>
+                    <p class="member-role">Tutora de Idiomas</p>
+                    <p class="member-bio">Clases personalizadas de inglés, francés.</p>
+                    <div class="member-tags">
+                        <span class="tag">Idiomas</span><span class="tag">Tutorías</span><span class="tag">Inglés</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="member-footer">
+                    <span class="member-rate">₡5.000/hr</span>
+                    <button class="member-cta">Consultar</button>
+                </div>
+                </div>
+            </article>
+
+            <article class="member-card" data-tags="silver video edición reels premier after effects">
+                <header class="member-ribbon member-ribbon--silver">SILVER</header>
+                <div class="member-body">
+                <div class="member-row">
+                    <img class="member-thumb" src="https://placehold.co/160x160/C0C0C0/000?text=DL" alt="David López">
+                    <div>
+                    <h3 class="member-name">David López</h3>
+                    <p class="member-role">Aprendiz de guitarra</p>
+                    <p class="member-bio">Me gustaría empezar a dar clases de guitarra para poder pagar la universidad</p>
+                    <div class="member-tags">
+                        <span class="tag">Música</span><span class="tag">Guitarra</span><span class="tag">Percusión</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="member-footer">
+                    <span class="member-rate">₡4000/hr</span>
+                    <button class="member-cta">Consultar</button>
+                </div>
+                </div>
+            </article>
+            </div>
+        </div>
+        </section>
+
+        <!-- Free Members Section (NUEVA) -->
+        <section class="py-20 px-6 free-members">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16" style="color:#CD7F32;">🚀 Miembros Bronze</h2>
+
+            <div class="members-grid">
+            <article class="member-card" data-tags="free yoga mindfulness bienestar salud">
+                <div class="member-body">
+                <div class="member-row">
+                    <img class="member-thumb" src="https://placehold.co/160x160/6c757d/FFF?text=EM" alt="Elena Morales">
+                    <div>
+                    <h3 class="member-name">Elena Morales</h3>
+                    <p class="member-role">Instructora de Yoga</p>
+                    <p class="member-bio">Yoga y mindfulness para bienestar estudiantil.</p>
+                    <div class="member-tags">
+                        <span class="tag">Deporte</span><span class="tag">Relajación</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="member-footer">
+                    <span class="member-rate">₡12.000/hr</span>
+                    <button class="member-cta member-cta--ghost">Consultar</button>
+                </div>
+                </div>
+            </article>
+
+            <article class="member-card" data-tags="free estudio técnicas organización productividad">
+                <div class="member-body">
+                <div class="member-row">
+                    <img class="member-thumb" src="https://placehold.co/160x160/6c757d/FFF?text=JH" alt="Javier Herrera">
+                    <div>
+                    <h3 class="member-name">Javier Herrera</h3>
+                    <p class="member-role">Coach Académico</p>
+                    <p class="member-bio">Técnicas de estudio y organización del tiempo.</p>
+                    <div class="member-tags">
+                        <span class="tag">Tutorías</span><span class="tag">Productividad</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="member-footer">
+                    <span class="member-rate">₡4000/hr</span>
+                    <button class="member-cta member-cta--ghost">Consultar</button>
+                </div>
+                </div>
+            </article>
+
+            <article class="member-card" data-tags="free arte ilustración digital procreate">
+                <div class="member-body">
+                <div class="member-row">
+                    <img class="member-thumb" src="https://placehold.co/160x160/6c757d/FFF?text=VC" alt="Valeria Castro">
+                    <div>
+                    <h3 class="member-name">Valeria Castro</h3>
+                    <p class="member-role">Artista Digital</p>
+                    <p class="member-bio">Ilustraciones personalizadas y diseño de personajes.</p>
+                    <div class="member-tags">
+                        <span class="tag">Arte/Diseño</span><span class="tag">Animación</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="member-footer">
+                    <span class="member-rate">Precio base ₡2500</span>
+                    <button class="member-cta member-cta--ghost">Consultar</button>
+                </div>
+                </div>
+            </article>
+            </div>
+        </div>
+        </section>
+
+
+
+    <section class="partners-section -mt-8">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="partner-single">
+        <img src="Recursos/slide5.jpg" alt="SK_x_CUC">
+        </div>
+    </div>
+    </section>
+
+    <!-- Membresias-->
+    <section id="membresias" class="pt-28 pb-20 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Título -->
+        <h2 class="text-4xl font-bold text-center mb-6 text-black">Membresías</h2>
+        <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12">
+        Elegí el plan que mejor se adapte a vos: Bronze para empezar, Silver para destacar 
+        y Gold para brillar con un perfil personalizado y mayor alcance en la comunidad SKLUBS.
+        </p>
+
+        <!-- Grid de planes -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <!-- Bronze -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col text-center hover:shadow-2xl transition-all border-4 min-h-[550px]" style="border-color:#CD7F32;">
+                <div>
+                <h3 class="text-2xl font-bold" style="color:#CD7F32;">Bronze</h3>
+                <p class="text-4xl font-extrabold mt-4" style="color:#CD7F32;">₡3000</p>
+                <ul class="mt-6 space-y-3 text-gray-600 text-left">
+                    <li>✔ Un espacio en la plataforma para mostrar tu habilidad o talento.</li>
+                    <li>✔ Perfil básico y funcional para iniciar.</li>
+                    <li><span class="italic">Ideal para quienes apenas están explorando cómo monetizar sus talentos o probar la plataforma.</span></li>
+                </ul>
+                </div>
+                <button class="mt-auto mb text-white px-6 py-3 rounded-full font-semibold transition transform hover:scale-105" 
+                        style="background: linear-gradient(135deg, #CD7F32, #a85c27);">
+                Adquirir plan
+                </button>
+            </div>
+            
+            <!-- Silver -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col text-center hover:shadow-2xl transition-all border-4 border-gray-300">
+                <div>
+                <h3 class="text-2xl font-bold text-gray-700">Silver</h3>
+                <p class="text-4xl font-extrabold text-gray-600 mt-4">₡6000</p>
+                <ul class="mt-6 space-y-3 text-gray-600 text-left">
+                    <li>✔ Todo lo de Bronze.</li>
+                    <li>✔ Aparición en la sección <strong>Silver Destacados</strong>.</li>
+                    <li>✔ Mayor visibilidad en búsquedas internas.</li>
+                    <li><span class="italic">Recomendado para quienes ya tienen experiencia enseñando/compartiendo su habilidad y quieren captar más estudiantes.</span></li>
+                </ul>
+                </div>
+                <button class="mt-auto bg-gradient-to-r from-gray-400 to-gray-600 text-white px-6 py-3 rounded-full font-semibold hover:from-gray-500 hover:to-gray-700 transition transform hover:scale-105">
+                Adquirir plan
+                </button>
+            </div>
+
+            <!-- Gold -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col text-center hover:shadow-2xl transition-all border-4 border-yellow-400">
+                <div>
+                <h3 class="text-2xl font-bold text-yellow-500">Gold</h3>
+                <p class="text-4xl font-extrabold text-yellow-500 mt-4">₡7000</p>
+                <ul class="mt-6 space-y-3 text-gray-600 text-left">
+                    <li>✔ Todo lo de Silver.</li>
+                    <li>✔ Perfil Premium: fotos, videos y personalización.</li>
+                    <li>✔ Exhibición prioritaria en <strong>Gold Members</strong>.</li>
+                    <li>✔ Estadísticas avanzadas y recomendaciones destacadas.</li>
+                    <li><span class="italic">Recomendado para quienes buscan consolidar su marca personal y proyectar profesionalismo.</span></li>
+                </ul>
+                </div>
+                <button class="mt-auto bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white px-6 py-3 rounded-full font-semibold hover:from-yellow-500 hover:to-yellow-700 transition transform hover:scale-105">
+                Adquirir plan
+                </button>
+            </div>
+            </div>
+    </div>
+    </section>
+
+    <!-- Acerca de-->
+    <section id="acercade" class="py-20 px-6 bg-white">
+    <div class="max-w-6xl mx-auto text-center">
+        
+        <!-- Título -->
+        <h2 class="text-4xl font-bold text-gray-800 mb-20">Sobre nosotros</h2>
+
+        <!-- Problema que resolvemos -->
+        <div class="mb-16 max-w-4xl mx-auto text-left leading-relaxed">
+        <h3 class="text-3xl font-bold text-gray-800 mb-12 text-center">¿Qué problema resolvemos?</h3>
+        
+        <p class="text-gray-700 mb-4">
+            En Costa Rica, acceder y mantenerse en la universidad sigue siendo un desafío enorme. 
+            Según el <span class="font-semibold">Programa Estado de la Nación (2023)</span>, 
+            un porcentaje significativo de estudiantes abandona sus estudios por razones financieras. 
+            Matrículas, materiales, transporte y alimentación se convierten en barreras que muchas familias no pueden sostener.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            Al mismo tiempo, existe un <span class="font-semibold text-teal-600">caudal de talentos juveniles desaprovechados</span> 
+            —arte, música, idiomas, tecnología, ciencias, habilidades pedagógicas— 
+            que rara vez encuentran un espacio formal donde ser reconocidos o monetizados. 
+            Estos talentos suelen quedar reducidos a círculos pequeños o al ocio personal.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+            En un contexto donde el <span class="font-semibold">empleo formal es cada vez más limitado</span>, 
+            muchos jóvenes quedan atrapados entre estudiar, trabajar y sostenerse económicamente, 
+            sin un canal real para transformar lo que saben en valor.
+        </p>
+
+        <p class="text-gray-700">
+            Frente a esto, las soluciones tradicionales —becas o subsidios— son insuficientes.  
+            El verdadero reto está en <span class="font-semibold">construir puentes entre conocimiento, talento y oportunidades</span>.  
+            <span class="font-semibold text-teal-600">SKLUBS nace para visibilizar y valorizar las habilidades estudiantiles</span>, 
+            permitiendo a los jóvenes generar ingresos, fortalecer su perfil y aportar a sus comunidades 
+            mientras continúan su formación académica.
+        </p>
+        </div>
+
+        <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">¿De dónde surge el nombre SKLUBS?</h3>
+
+        <p class="text-gray-600 max-w-3xl mx-auto mb-12">  
+        El nombre nace de la combinación de dos conceptos:
+        </p>
+
+        <!-- Significado del nombre -->
+        <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <!-- Skills -->
+        <div class="p-6 bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 rounded-xl shadow text-left text-white">
+            <h3 class="text-xl font-semibold">Skills</h3>
+            <p class="mt-2">Que en inglés significa: <span class="font-semibold">“habilidades”</span>, el núcleo de nuestra comunidad.</p>
+        </div>
+        
+        <!-- Clubs -->
+        <div class="p-6 bg-gradient-to-r from-blue-500 via-cyan-400 to-teal-400 rounded-xl shadow text-left text-white">
+            <h3 class="text-xl font-semibold">Clubs</h3>
+            <p class="mt-2">Clubes o grupos de interés en común, que impulsan el aprendizaje colaborativo.</p>
+        </div>
+        </div>
+
+        <!-- Creadores -->
+        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Creadores:</h3>
+        <div class="flex flex-wrap justify-center gap-8 mb-16">
+        
+        <div class="bg-white p-6 rounded-xl shadow w-64 border-2 border-cyan-300">
+            <div class="creator-badge mb-3">MA</div>
+            <h4 class="font-semibold text-lg text-gray-800">Montserrat Alpízar</h4>
+            <p class="text-gray-600 mt-2 text-sm">Co-fundadora</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow w-64 border-2 border-cyan-300">
+            <div class="creator-badge mb-3">JF</div>
+            <h4 class="font-semibold text-lg text-gray-800">Jocsan Fonseca</h4>
+            <p class="text-gray-600 mt-2 text-sm">Co-fundador</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow w-64 border-2 border-cyan-300">
+            <div class="creator-badge mb-3">AG</div>
+            <h4 class="font-semibold text-lg text-gray-800">Adrián Guerrero</h4>
+            <p class="text-gray-600 mt-2 text-sm">Co-fundador</p>
+        </div>
+        </div>
+
+
+        <!-- Misión, Visión y Valores -->
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+        <!-- Misión -->
+        <div class="bg-white p-6 rounded-xl shadow border-2 border-cyan-300">
+            <h4 class="font-semibold text-lg mb-3 text-gray-800">Nuestra Misión</h4>
+            <p class="text-gray-600">“Potenciar Habilidades”</p>
+        </div>
+
+        <!-- Visión -->
+        <div class="bg-white p-6 rounded-xl shadow border-2 border-cyan-300">
+            <h4 class="font-semibold text-lg mb-3 text-gray-800">Nuestra Visión</h4>
+            <p class="text-gray-600">“Cada estudiante deja su huella y otros aprendan de ella”</p>
+        </div>
+
+        <!-- Valores -->
+        <div class="bg-white p-6 rounded-xl shadow border-2 border-cyan-300">
+            <h4 class="font-semibold text-lg mb-3 text-gray-800">Nuestros Valores</h4>
+            <ul class="space-y-2 text-gray-600">
+            <li>Confianza</li>
+            <li>Compromiso</li>
+            <li>Empatía</li>
+            <li>Colaboración</li>
+            </ul>
+        </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+        <!-- Geometric Footer -->
+    <footer class="footer-geometric mt-20">
+        <div class="shape-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <!-- Columna 1 -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">SKLUBS</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Somos una plataforma creada para estudiantes con talentos y con ganas 
+                        de aprender algo nuevo, conectando talento con oportunidades, talleres y networking.
+                    </p>
+                </div>
+                
+                <!-- Columna 2 -->
+                <div>
+                    <h4 class="font-semibold text-lg mb-6">Navegación</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-red-400 transition-colors">Inicio</a></li>
+                        <li><a href="#membresias" class="text-gray-300 hover:text-teal-400 transition-colors">Membresías</a></li>
+                        <li><a href="#estudiantes" class="text-gray-300 hover:text-red-400 transition-colors">Estudiantes</a></li>
+                        <li><a href="#acercade" class="text-gray-300 hover:text-teal-400 transition-colors">Sobre nosotros</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Columna 3 -->
+                <div>
+                    <h4 class="font-semibold text-lg mb-6">Soporte</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li>📩 <a href="mailto:sklubscr@gmail.com" class="hover:text-red-400">sklubscr@gmail.com</a></li>
+                        <li>Centro de Ayuda</li>
+                        <li>Políticas</li>
+                    </ul>
+                </div>
+                
+                <!-- Columna 4 -->
+                <div>
+                    <h4 class="font-semibold text-lg mb-6">Conecta con SKLUBS</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/sklubs_cr" target="_blank" class="social-hexagon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/sklubs.cr" target="_blank" class="social-hexagon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://tiktok.com/@sklubs" target="_blank" class="social-hexagon">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>  
+                </div>
+            </div>
+            
+            <!-- Derechos reservados -->
+            <div class="border-t border-gray-600 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2025 SKLUBS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const carousel  = document.querySelector(".hero-carousel");
+        const slides    = Array.from(carousel.querySelectorAll(".hero-slide"));
+        const dotsWrap  = carousel.querySelector(".dots");
+        const prevBtn   = carousel.querySelector(".nav-prev");
+        const nextBtn   = carousel.querySelector(".nav-next");
+
+        if (!slides.length) return; // nada que hacer si no hay slides
+
+        // Crear dots según la cantidad real de slides
+        dotsWrap.innerHTML = ""; // limpia por si quedó algo
+        const dots = slides.map((_, i) => {
+            const b = document.createElement("button");
+            b.className = "dot" + (i === 0 ? " is-active" : "");
+            b.setAttribute("aria-label", `Slide ${i + 1}`);
+            dotsWrap.appendChild(b);
+            return b;
+        });
+
+        let current = Math.max(0, slides.findIndex(s => s.classList.contains("is-active")));
+        if (current === -1) current = 0;
+
+        function showSlide(index) {
+            const total = slides.length;
+            index = (index + total) % total;
+
+            slides.forEach(s => s.classList.remove("is-active"));
+            dots.forEach(d => d.classList.remove("is-active"));
+
+            slides[index].classList.add("is-active");
+            dots[index].classList.add("is-active");
+            current = index;
+        }
+
+        function next() { showSlide(current + 1); }
+        function prev() { showSlide(current - 1); }
+
+        nextBtn.addEventListener("click", next);
+        prevBtn.addEventListener("click", prev);
+
+        dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
+
+        // Autoplay con pausa al hover
+        let timerId = null;
+        const INTERVAL = 5000;
+
+        function start() { stop(); timerId = setInterval(next, INTERVAL); }
+        function stop()  { if (timerId) clearInterval(timerId); timerId = null; }
+
+        carousel.addEventListener("mouseenter", stop);
+        carousel.addEventListener("mouseleave", start);
+
+        // Init
+        showSlide(current);
+        start();
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+        const input = document.querySelector(".vortex-input input");
+        const orbs  = document.querySelectorAll(".skill-orb");
+        const cards = document.querySelectorAll(".gold-members .member-card, .silver-members .member-card, .free-members .member-card");
+
+        function normalize(s){ return (s||"").toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu,""); }
+
+        function applyFilter(term){
+            const q = normalize(term.trim());
+            cards.forEach(card => {
+            const haystack = normalize(card.textContent + " " + (card.getAttribute("data-tags")||""));
+            const show = !q || haystack.includes(q);
+            card.style.display = show ? "" : "none";
+            });
+        }
+
+        if(input){
+            input.addEventListener("input", e => applyFilter(e.target.value));
+        }
+
+        orbs.forEach(orb => {
+            orb.addEventListener("click", () => {
+            const label = orb.textContent.trim();
+            if(input){ input.value = label; }
+            applyFilter(label);
+            // pequeño feedback visual
+            orbs.forEach(o => o.classList.remove("is-active"));
+            orb.classList.add("is-active");
+            });
+        });
+        });
+
+        
+
+
+    </script>
+</body>
+</html>
